@@ -1,6 +1,6 @@
 module ApplicationHelper
   def full_title(page_title = '')
-    base_title = 'いえログ'
+    base_title = 'yeahlog'
     if page_title.blank?
       base_title
     else

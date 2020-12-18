@@ -22,6 +22,10 @@ RSpec.describe "Sessions", type: :system do
         expect(page).to have_content 'パスワード'
       end
 
+      it "ヘッダーにログインページのリンクがあることを確認" do
+        expect(page).to have_link 'ログイン', href: login_path
+      end
+
       it "ログインフォームが正しく表示される" do
         expect(page).to have_css 'input#user_email'
         expect(page).to have_css 'input#user_password'

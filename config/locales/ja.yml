@@ -8,6 +8,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       user: ユーザー
+      property: 物件
     attributes:
       user:
         id: ID
@@ -19,6 +20,12 @@ ja:
         sex: 性別
         created_at: 登録日時
         updated_at: 更新日時
+      property:
+         id: ID
+         name: 物件名
+         description: 説明
+         reference: 物件詳細URL
+         recommend: オススメ度
   date:
     abbr_day_names:
     - 日

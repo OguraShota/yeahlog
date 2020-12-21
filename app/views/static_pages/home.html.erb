@@ -1,5 +1,12 @@
+<% if logged_in? %>
+  <div class="container">
+    <h3>物件一覧 (<%= @feed_items.count %>)</h3>
+    <%= render 'shared/feed' %>
+  </div>
+<% else %>
 <center>
   <h1>yeahlogへようこそ！</h1>
   <h2>下北沢に特化した物件情報共有サイトです</h2>
   <p>お部屋探しを成功させましょう！</p>
 </center>
+<% end %>

@@ -14,6 +14,22 @@ RSpec.describe "StaticPages", type: :system do
       it "正しいタイトルが表示されることを確認" do
         expect(page).to have_title full_title
       end
+
+      context "物件フィード", js: true do
+        let!(:user) { create(:user) }
+        let!(:property) { create(:property, user: user)}
+
+        it "物件のページネーションが表示されること" do
+          login_for_system(user)
+          create_list(:property, 6, user: user)
+          visit root_path
+          expect(page).to have_content "物件一覧 (#{user.properties.count})"
+          expect(page).to have_css "div.pagination"
+          Property.take(5).each do |p|
+            expect(page).to have_link p.name
+          end
+        end
+      end
     end
   end
 

@@ -19,8 +19,11 @@ RSpec.describe "StaticPages", type: :system do
         let!(:user) { create(:user) }
         let!(:property) { create(:property, user: user)}
 
-        it "物件のページネーションが表示されること" do
+        before do
           login_for_system(user)
+        end
+
+        it "物件のページネーションが表示されること" do
           create_list(:property, 6, user: user)
           visit root_path
           expect(page).to have_content "物件一覧 (#{user.properties.count})"
@@ -28,6 +31,11 @@ RSpec.describe "StaticPages", type: :system do
           Property.take(5).each do |p|
             expect(page).to have_link p.name
           end
+        end
+
+        it "「物件を登録する」リンクが表示されること" do
+          visit root_path
+          expect(page).to have_link "物件を登録する", href: new_property_path
         end
       end
     end

@@ -21,6 +21,9 @@
           <%= f.text_field :recommend, class: 'form-control', id: 'property_recommend' %>
         </div>
         <%= f.submit "更新する", class: "btn btn-primary" %>
+        <p></p>
+        <%= link_to "物件を削除する", property_path(@property), method: :delete,
+                                     data: { confirm: "本当にこの物件を削除してよろしいですか？" } %>
       <% end %>
     </div>
   </div>

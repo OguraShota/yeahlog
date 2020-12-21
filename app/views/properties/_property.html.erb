@@ -7,4 +7,8 @@
   <span class="timestamp">
     <%= time_ago_in_words(property.created_at) %>前に投稿
   </span>
+  <% if current_user.admin? || (current_user == property.user) %>
+    <%= link_to "削除", property_path(property), method: :delete,
+                        data: { confirm: "本当に削除しますか？" } %>
+  <% end %>
 </li>

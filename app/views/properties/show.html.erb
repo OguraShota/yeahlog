@@ -6,6 +6,10 @@
       <% if current_user == @property.user %>
         <%= link_to "編集", edit_property_path(@property), class: 'edit-property' %>
       <% end %>
+      <% if current_user.admin? || (current_user == @property.user) %>
+        <%= link_to "削除", property_path(@property), method: :delete, class: 'delete-property',
+                                                   data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
     </div>
     <h4><%= @property.description %></h4>
     <h4 class="property-reference">物件詳細：<%= link_to "#{@property.reference}", @property.reference, target: "_blank" %></h4>

@@ -67,4 +67,47 @@ RSpec.describe "Dishes", type: :system do
       end
     end
   end
+
+  describe "物件編集ページ" do
+    before do
+      login_for_system(user)
+      visit property_path(property)
+      click_link "編集"
+    end
+
+    context "ページレイアウト" do
+      it "正しいタイトルが表示されること" do
+        expect(page).to have_title full_title('物件情報の編集')
+      end
+
+      it "入力部分に適切なラベルが表示されること" do
+        expect(page).to have_content '物件名'
+        expect(page).to have_content '説明'
+        expect(page).to have_content '物件詳細URL'
+        expect(page).to have_content 'オススメ度 [1~5]'
+      end
+    end
+
+    context "物件の更新処理" do
+      it "有効な更新" do
+        fill_in "物件名", with: "編集:ハイツ池ノ上"
+        fill_in "説明", with: "編集:池ノ上駅より徒歩5分"
+        fill_in "物件詳細URL", with: "https://suumo.jp/library/tf_13/sc_13112/to_1000617572/"
+        fill_in "オススメ度", with: 2
+        click_button "更新する"
+        expect(page).to have_content "物件情報が更新されました！"
+        expect(property.reload.name).to eq "編集:ハイツ池ノ上"
+        expect(property.reload.description).to eq "編集:池ノ上駅より徒歩5分"
+        expect(property.reload.reference).to eq "https://suumo.jp/library/tf_13/sc_13112/to_1000617572/"
+        expect(property.reload.recommend).to eq 2
+      end
+
+      it "無効な更新" do
+        fill_in "物件名", with: ""
+        click_button "更新する"
+        expect(page).to have_content "物件名を入力してください"
+        expect(property.reload.name).not_to eq ""
+      end
+    end
+  end
 end

@@ -2,6 +2,11 @@
 <div class="container">
   <div class="row">
     <h2 class="property-name"><%= @property.name %></h2>
+    <div class="change-property">
+      <% if current_user == @property.user %>
+        <%= link_to "編集", edit_property_path(@property), class: 'edit-property' %>
+      <% end %>
+    </div>
     <h4><%= @property.description %></h4>
     <h4 class="property-reference">物件詳細：<%= link_to "#{@property.reference}", @property.reference, target: "_blank" %></h4>
     <div class="show-property-other-info">

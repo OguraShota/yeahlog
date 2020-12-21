@@ -1,5 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :logged_in_user
+  before_action :correct_user, only: [:edit, :update]
 
   def new
     @property = Property.new
@@ -19,10 +20,29 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def edit
+    @property = Property.find(params[:id])
+  end
+
+  def update
+    @property = Property.find(params[:id])
+    if @property.update_attributes(property_params)
+      flash[:success] = "物件情報が更新されました！"
+      redirect_to @property
+    else
+      render 'edit'
+    end
+  end
+
   private
 
     def property_params
       params.require(:property).permit(:name, :description, :reference, :recommend)
     end
 
+    def correct_user
+      # 現在のユーザーが更新対象の物件を保有しているかどうかの確認
+      @property = current_user.properties.find_by(id: params[:id])
+      redirect_to root_url if @property.nil?
+    end
 end

@@ -1,0 +1,13 @@
+<% provide(:title, "#{@property.name}") %>
+<div class="container">
+  <div class="row">
+    <h2 class="property-name"><%= @property.name %></h2>
+    <h4><%= @property.description %></h4>
+    <h4 class="property-reference">物件詳細：<%= link_to "#{@property.reference}", @property.reference, target: "_blank" %></h4>
+    <div class="show-property-other-info">
+      <div class="property-info">
+        <h5>オススメ度：</h5><h4><%= @property.recommend %></h4>
+      </div>
+    </div>
+  </div>
+</div>

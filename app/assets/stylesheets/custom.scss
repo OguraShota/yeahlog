@@ -213,3 +213,59 @@ span.picture {
 .input-unneed {
   font-size: 13px;
 }
+
+// 物件詳細ページ
+
+.property-user-name {
+  display: inline-block;
+}
+
+h2.property-name {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.property-reference {
+  margin-top: 30px;
+}
+
+.property-portion {
+  margin-top: 30px;
+}
+
+.tips {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  h5 {
+    font-size: 17px;
+  }
+}
+.title-tips {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.show-property-other-info {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.property-other-info {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.property-info {
+  h5 {
+    font-size: 16px;
+    display: inline-block;
+  }
+  h4 {
+    font-size: 20px;
+    display: inline-block;
+  }
+}

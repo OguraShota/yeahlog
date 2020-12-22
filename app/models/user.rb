@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :properties, dependent: :destroy
+  has_many :relationship,   class_name: "Relationship",
+                            foreign_key: "follower_id",
+                            dependent: :destroy
 
   attr_accessor :remember_token
   before_save :downcase_email

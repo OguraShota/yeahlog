@@ -152,3 +152,128 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+.properties {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8 ;
+ }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .description {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
+//トップページ(ログイン後)
+//「物件を登録する」ボタン
+
+.btn-record {
+  margin-top: 3em;
+}
+
+//// 料理登録ページ ////
+.input-need {
+  color: red;
+  font-size: 13px;
+}
+
+.input-unneed {
+  font-size: 13px;
+}
+
+// 物件詳細ページ
+
+.property-user-name {
+  display: inline-block;
+}
+
+h2.property-name {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.property-reference {
+  margin-top: 30px;
+}
+
+.property-portion {
+  margin-top: 30px;
+}
+
+.tips {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  h5 {
+    font-size: 17px;
+  }
+}
+.title-tips {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.show-property-other-info {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.property-other-info {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.property-info {
+  h5 {
+    font-size: 16px;
+    display: inline-block;
+  }
+  h4 {
+    font-size: 20px;
+    display: inline-block;
+  }
+}
+
+.change-property {
+  display: inline-block;
+}
+
+.edit-property .delete-property {
+  font-size: 15px;
+}

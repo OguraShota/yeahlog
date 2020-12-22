@@ -1,5 +1,19 @@
+<% if logged_in? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h3>物件一覧 (<%= @feed_items.count %>)</h3>
+        <%= render 'shared/feed' %>
+      </div>
+      <div class="col-md-3">
+      <p><%= link_to "物件を登録する", new_property_path, class: "btn btn-primary btn-lg btn-record" %></p>
+      </div>
+    </div>
+  </div>
+<% else %>
 <center>
   <h1>yeahlogへようこそ！</h1>
   <h2>下北沢に特化した物件情報共有サイトです</h2>
   <p>お部屋探しを成功させましょう！</p>
 </center>
+<% end %>

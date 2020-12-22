@@ -122,6 +122,7 @@ RSpec.describe "Users", type: :system do
     context "ページレイアウト" do
       before do
         login_for_system(user)
+        create_list(:property, 10, user: user)
         visit user_path(user)
       end
 
@@ -138,6 +139,24 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content user.introduction
         expect(page).to have_content user.sex
       end
+
+      it "物件の件数が表示されていることを確認" do
+        expect(page).to have_content "物件情報 (#{user.properties.count})"
+      end
+
+      it "物件の情報が表示されていることを確認" do
+        Property.take(5).each do |property|
+          expect(page).to have_link property.name
+          expect(page).to have_content property.description
+          expect(page).to have_content property.user.name
+          expect(page).to have_content property.recommend
+        end
+      end
+
+      it "物件のページネーションが表示されていることを確認" do
+        expect(page).to have_css "div.pagination"
+      end
+
     end
   end
 end

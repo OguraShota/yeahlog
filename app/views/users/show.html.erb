@@ -17,4 +17,15 @@
       <% end %>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-9">
+      <% if @user.properties.any? %>
+        <h3>物件情報 (<%= @user.properties.count %>)</h3>
+        <ol class="properties">
+          <%= render @properties %>
+        </ol>
+        <%= will_paginate @properties %>
+      <% end %>
+    </div>
+  </div>
 </div>

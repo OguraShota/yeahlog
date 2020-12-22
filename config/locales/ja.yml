@@ -26,6 +26,7 @@ ja:
          description: 説明
          reference: 物件詳細URL
          recommend: オススメ度
+         picture: 物件の外観写真
   date:
     abbr_day_names:
     - 日

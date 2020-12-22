@@ -277,3 +277,9 @@ h2.property-name {
 .edit-property .delete-property {
   font-size: 15px;
 }
+
+.property.picture img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}

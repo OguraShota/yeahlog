@@ -49,7 +49,7 @@ class PropertiesController < ApplicationController
   private
 
     def property_params
-      params.require(:property).permit(:name, :description, :reference, :recommend)
+      params.require(:property).permit(:name, :description, :reference, :recommend, :picture)
     end
 
     def correct_user

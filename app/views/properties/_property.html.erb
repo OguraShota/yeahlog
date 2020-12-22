@@ -1,6 +1,9 @@
 <li id="property-<%= property.id %>">
   <%= link_to gravatar_for(property.user, size: 50), property.user %>
   <span class="name"><%= link_to property.name, property_path(property) %></span>
+  <span>
+    <%= link_to((image_tag property.picture.thumb200.url), property_path(property.id), class: 'property-picture') if property.picture.url.present? %>
+  </span>
   <span class="description"><%= property.description %></span><br>
   <span class="recommend">オススメ度：<%= property.recommend %></span><br>
   <span class="reference"><%= link_to "物件詳細", property.reference, target: :_blank %></span>

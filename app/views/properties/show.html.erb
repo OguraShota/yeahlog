@@ -1,21 +1,28 @@
 <% provide(:title, "#{@property.name}") %>
 <div class="container">
   <div class="row">
-    <h2 class="property-name"><%= @property.name %></h2>
-    <div class="change-property">
-      <% if current_user == @property.user %>
-        <%= link_to "編集", edit_property_path(@property), class: 'edit-property' %>
-      <% end %>
-      <% if current_user.admin? || (current_user == @property.user) %>
-        <%= link_to "削除", property_path(@property), method: :delete, class: 'delete-property',
-                                                   data: { confirm: "本当に削除しますか？" } %>
-      <% end %>
+    <div class="col-md-4">
+      <span class="picture">
+        <%= link_to((image_tag @property.picture.url), property_path(@property.id), class: 'property-picture') if @property.picture.url.present? %>
+      </span>
     </div>
-    <h4><%= @property.description %></h4>
-    <h4 class="property-reference">物件詳細：<%= link_to "#{@property.reference}", @property.reference, target: "_blank" %></h4>
-    <div class="show-property-other-info">
-      <div class="property-info">
-        <h5>オススメ度：</h5><h4><%= @property.recommend %></h4>
+    <div class="col-md-8">
+      <h2 class="property-name"><%= @property.name %></h2>
+      <div class="change-property">
+        <% if current_user == @property.user %>
+          <%= link_to "編集", edit_property_path(@property), class: 'edit-property' %>
+        <% end %>
+        <% if current_user.admin? || (current_user == @property.user) %>
+          <%= link_to "削除", property_path(@property), method: :delete, class: 'delete-property',
+                                                    data: { confirm: "本当に削除しますか？" } %>
+        <% end %>
+      </div>
+      <h4><%= @property.description %></h4>
+      <h4 class="property-reference">物件詳細：<%= link_to "#{@property.reference}", @property.reference, target: "_blank" %></h4>
+      <div class="show-property-other-info">
+        <div class="property-info">
+          <h5>オススメ度：</h5><h4><%= @property.recommend %></h4>
+        </div>
       </div>
     </div>
   </div>

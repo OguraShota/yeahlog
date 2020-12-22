@@ -23,6 +23,13 @@ RSpec.describe "StaticPages", type: :system do
           login_for_system(user)
         end
 
+        it "物件を削除後、削除成功のフラッシュが表示されること" do
+          visit root_path
+          click_on '削除'
+          page.driver.browser.switch_to.alert.accept
+          expect(page).to have_content '物件が削除されました'
+        end
+
         it "物件のページネーションが表示されること" do
           create_list(:property, 6, user: user)
           visit root_path

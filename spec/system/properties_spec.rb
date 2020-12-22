@@ -66,6 +66,18 @@ RSpec.describe "Dishes", type: :system do
         expect(page).to have_content property.recommend
       end
     end
+
+    context "物件の削除", js: true do
+      it "削除成功のフラッシュが表示されること" do
+        login_for_system(user)
+        visit property_path(property)
+        within find('.change-property') do
+          click_on '削除'
+        end
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content '物件が削除されました'
+      end
+    end
   end
 
   describe "物件編集ページ" do
@@ -85,6 +97,14 @@ RSpec.describe "Dishes", type: :system do
         expect(page).to have_content '説明'
         expect(page).to have_content '物件詳細URL'
         expect(page).to have_content 'オススメ度 [1~5]'
+      end
+    end
+
+    context "物件の削除処理", js: true do
+      it "削除成功のフラッシュが表示されること" do
+        click_on '削除'
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content '物件が削除されました'
       end
     end
 

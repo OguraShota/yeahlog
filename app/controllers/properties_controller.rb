@@ -35,11 +35,11 @@ class PropertiesController < ApplicationController
   end
 
   def destroy
-    @properties = Property.find(params[:id])
-    if current_user.admin? || current_user?(@properties.user)
+    @property = Property.find(params[:id])
+    if current_user.admin? || current_user?(@property.user)
       @property.destroy
       flash[:success] = "物件が削除されました"
-      redirect_to request.referrer == user_url(@property.user)
+      redirect_to request.referrer == user_url(@property.user) ? user_url(@property.user) : root_url
     else
       flash[:danger] = "他人の物件は削除できません"
       redirect_to root_url

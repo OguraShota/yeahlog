@@ -7,10 +7,9 @@
         <span class="picture">
           <%= f.label :picture %> <span class="input-unneed">*任意</span>
           <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'dish-picture' %>
-          <%= image_tag(@property.picture.thumb200.url) if @property.picture.url.present? %>
-          <p></p>
+          <%= image_tag(@property.picture.thumb400.url) if @property.picture.url.present? %>
         </span>
-        <p></p>
+        </p>
         <div class = 'form-group'>
           <%= f.label :name %>　<span class="input-need">※必須</span>
           <%= f.text_field :name, class: 'form-control', id: 'property_name' %>

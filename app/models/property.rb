@@ -1,5 +1,6 @@
 class Property < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
 
@@ -14,6 +15,10 @@ class Property < ApplicationRecord
             },
             allow_nil: true 
   validate :picture_size
+
+  def feed_comment(property_id)
+    Comment.where("property_id = ?", property_id)
+  end
 
   private
   

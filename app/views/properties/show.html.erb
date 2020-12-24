@@ -1,4 +1,5 @@
 <% provide(:title, "#{@property.name}") %>
+<% @comments = @property.feed_comment(@property.id) %>
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -23,6 +24,10 @@
         <div class="property-info">
           <h5>オススメ度：</h5><h4><%= @property.recommend %></h4>
         </div>
+      </div>
+      <div class="comment">
+        <%= render "comments/feed_comments" %>
+        <%= render "comments/new" %>
       </div>
     </div>
   </div>

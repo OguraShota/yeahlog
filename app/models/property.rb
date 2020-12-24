@@ -16,6 +16,10 @@ class Property < ApplicationRecord
             allow_nil: true 
   validate :picture_size
 
+  def feed_comment(property_id)
+    Comment.where("property_id = ?", property_id)
+  end
+
   private
   
   def picture_size

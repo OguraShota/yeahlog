@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   resources :properties
   resources :relationships, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
   
   get     :login,         to: 'sessions#new'
   post    :login,         to: 'sessions#create'

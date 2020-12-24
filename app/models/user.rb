@@ -51,8 +51,11 @@ class User < ApplicationRecord
   end
 
    # フィード一覧を取得
-   def feed
-    Property.where("user_id = ?", id)
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Property.where("user_id IN (#{following_ids})
+                    OR user_id = :user_id", user_id: id)
   end
 
   # ユーザーをフォローする

@@ -1,0 +1,14 @@
+<% @property = Property.find(favorite.property_id) %>
+<% user = @property.user %>
+<li id="favorite-<%= favorite.id %>">
+  <div class="row favorite-property">
+    <div class="col-md-2">
+      <%= link_to((image_tag @property.picture.url), property_path(@property), class: 'property-picture') %>
+    </div>
+    <div class="col-md-7">
+      <p><%= link_to @property.name, property_path(@property) %></p>
+      <p><%= @property.description %></p>
+      <p class="property-user"> by : <%= link_to user.name, user_path(user) %></p>
+    </div>
+  </div>
+</li>

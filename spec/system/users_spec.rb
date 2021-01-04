@@ -4,6 +4,8 @@ RSpec.describe "Users", type: :system do
   let!(:user) { create(:user) }
   let!(:admin_user) { create(:user, :admin) }
   let!(:other_user) { create(:user) }
+  let!(:property) { create(:property, user: user) }
+ 
 
   describe "ユーザー一覧ページ" do
     context "管理者ユーザーの場合" do
@@ -170,7 +172,20 @@ RSpec.describe "Users", type: :system do
       it "物件のページネーションが表示されていることを確認" do
         expect(page).to have_css "div.pagination"
       end
-
     end
+
+      context "お気に入り登録/解除" do
+        before do
+          login_for_system(user)
+        end
+
+        it "物件のお気に入り登録/解除ができること" do
+          expect(user.favorite?(property)).to be_falsey
+          user.favorite(property)
+          expect(user.favorite?(property)).to be_truthy
+          user.unfavorite(property)
+          expect(user.favorite?(property)).to be_falsey
+        end
+      end
   end
 end

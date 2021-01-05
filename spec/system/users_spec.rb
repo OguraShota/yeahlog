@@ -5,7 +5,7 @@ RSpec.describe "Users", type: :system do
   let!(:admin_user) { create(:user, :admin) }
   let!(:other_user) { create(:user) }
   let!(:property) { create(:property, user: user) }
- 
+  let!(:other_property) { create(:property, user: other_user) }
 
   describe "ユーザー一覧ページ" do
     context "管理者ユーザーの場合" do
@@ -164,7 +164,7 @@ RSpec.describe "Users", type: :system do
         Property.take(5).each do |property|
           expect(page).to have_link property.name
           expect(page).to have_content property.description
-          expect(page).to have_content property.user.name
+          
           expect(page).to have_content property.recommend
         end
       end
@@ -187,5 +187,77 @@ RSpec.describe "Users", type: :system do
           expect(user.favorite?(property)).to be_falsey
         end
       end
+    context "通知生成" do
+      before do
+        login_for_system(user)
+      end
+
+      context "自分以外のユーザーの物件に対して" do
+        before do
+          visit property_path(other_property)
+        end
+
+        it "お気に入り登録によって通知が作成されること" do
+          find('.like').click
+          visit property_path(other_property)
+          expect(page).to have_css 'li.no_notification'
+          logout
+          login_for_system(other_user)
+          expect(page).to have_css 'li.new_notification'
+          visit notifications_path
+          expect(page).to have_css 'li.no_notification'
+          expect(page).to have_content "あなたの物件が#{user.name}さんにお気に入り登録されました。"
+          expect(page).to have_content other_property.name
+          expect(page).to have_content other_property.description
+          expect(page).to have_content other_property.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+        end
+
+        it "コメントによって通知が作成されること" do
+          fill_in "comment_content", with: "コメントしました"
+          click_button "コメント"
+          expect(page).to have_css 'li.no_notification'
+          logout
+          login_for_system(other_user)
+          expect(page).to have_css 'li.new_notification'
+          visit notifications_path
+          expect(page).to have_css 'li.no_notification'
+          expect(page).to have_content "あなたの物件に#{user.name}さんがコメントしました。"
+          expect(page).to have_content '「コメントしました」'
+          expect(page).to have_content other_property.name
+          expect(page).to have_content other_property.description
+          expect(page).to have_content other_property.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+        end
+      end
+
+      context "自分の物件に対して" do
+        before do
+          visit property_path(property)
+        end
+
+        it "お気に入り登録によって通知が作成されないこと" do
+          find('.like').click
+          visit property_path(property)
+          expect(page).to have_css 'li.no_notification'
+          visit notifications_path
+          expect(page).not_to have_content "お気に入り登録されました。"
+          expect(page).not_to have_content property.name
+          expect(page).not_to have_content property.description
+          expect(page).not_to have_content property.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+        end
+
+        it "コメントによって通知が作成されないこと" do
+          fill_in "comment_content", with: "自分でコメント"
+          click_button "コメント"
+          expect(page).to have_css 'li.no_notification'
+          visit notifications_path
+          expect(page).not_to have_content 'コメントしました。'
+          expect(page).not_to have_content '自分でコメント'
+          expect(page).not_to have_content other_property.name
+          expect(page).not_to have_content other_property.description
+          expect(page).not_to have_content other_property.created_at
+        end
+      end
+    end
+
   end
 end

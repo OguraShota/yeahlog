@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :properties
   resources :relationships, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
+  resources :notifications, only: :index
   
   get     :login,         to: 'sessions#new'
   post    :login,         to: 'sessions#create'

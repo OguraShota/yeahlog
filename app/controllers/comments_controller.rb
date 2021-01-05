@@ -7,6 +7,12 @@ class CommentsController < ApplicationController
     @comment = @property.comments.build(user_id: current_user.id, content: params[:comment][:content])
     if !@property.nil? && @comment.save
       flash[:success] = "コメントを投稿しました！"
+      if @user != current_user
+        @user.notifications.create(property_id: @property.id, variety: 2,
+                                   from_user_id: current_user.id,
+                                   content: @comment.content)
+        @user.update_attribute(:notification, true)
+      end
     else
       flash[:danger] = "空のコメントは投稿できません。"
     end

@@ -1,3 +1,6 @@
+$main-magenta: #d397c4;
+$main-yellow: #5cf5ed;
+
 // ミックスイン
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -165,6 +168,9 @@ span.picture {
 
 .btn-record {
   margin-top: 3em;
+  color: black;
+  background-color: $main-yellow;
+  border-color: $main-yellow;
 }
 
 // 物件一覧

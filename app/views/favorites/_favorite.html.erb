@@ -8,7 +8,7 @@
     <div class="col-md-7">
       <p><%= link_to @property.name, property_path(@property) %></p>
       <p><%= @property.description %></p>
-      <p class="property-user"> by : <%= link_to user.name, user_path(user) %></p>
+      <p class="property-user"> created by : <%= link_to user.name, user_path(user) %></p>
     </div>
   </div>
 </li>

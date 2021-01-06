@@ -25,7 +25,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/vendor
+/vendor/bundle
+/vendor/.keep
 
 # Ignore unnecessary picture
 /public/uploads/*

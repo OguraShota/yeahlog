@@ -163,8 +163,7 @@ RSpec.describe "Users", type: :system do
       it "物件の情報が表示されていることを確認" do
         Property.take(5).each do |property|
           expect(page).to have_link property.name
-          expect(page).to have_content property.description
-          
+          expect(page).to have_content "★" * property.recommend + "☆" * (5 - property.recommend)
           expect(page).to have_content property.recommend
         end
       end

@@ -167,7 +167,24 @@ span.picture {
   margin-top: 3em;
 }
 
-//// 料理登録ページ ////
+// 物件一覧
+.property-user {
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+h3.property-name {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.property-description {
+  margin-top: 10px;
+}
+
+//// 物件登録ページ ////
 .input-need {
   color: red;
   font-size: 13px;
@@ -290,6 +307,10 @@ a.like, a.unlike {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
+}
+
+.property-user {
+  margin-bottom: 20px;
 }
 
 //通知

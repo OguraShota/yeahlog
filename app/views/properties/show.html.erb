@@ -1,34 +1,41 @@
 <% provide(:title, "#{@property.name}") %>
 <% @comments = @property.feed_comment(@property.id) %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <span class="picture">
-        <%= link_to((image_tag @property.picture.thumb200.url), property_path(@property.id), class: 'property-picture') if @property.picture.url.present? %>
-      </span>
-      <%= render 'users/favorite_form' %>
-    </div>
-    <div class="col-md-8">
-      <h2 class="property-name"><%= @property.name %></h2>
-      <div class="change-property">
-        <% if current_user == @property.user %>
-          <%= link_to "編集", edit_property_path(@property), class: 'edit-property' %>
-        <% end %>
-        <% if current_user.admin? || (current_user == @property.user) %>
-          <%= link_to "削除", property_path(@property), method: :delete, class: 'delete-property',
-                                                    data: { confirm: "本当に削除しますか？" } %>
-        <% end %>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <span class="picture">
+          <%= link_to((image_tag @property.picture.thumb200.url), property_path(@property.id), class: 'property-picture') if @property.picture.url.present? %>
+        </span>
+        <%= render 'users/favorite_form' %>
       </div>
-      <h4><%= @property.description %></h4>
-      <h4 class="property-reference">物件詳細：<%= link_to "#{@property.reference}", @property.reference, target: "_blank" %></h4>
-      <div class="show-property-other-info">
-        <div class="property-info">
-          <h5>オススメ度：</h5><h4><%= @property.recommend %></h4>
+      <div class="col-md-8">
+        <h2 class="property-name"><%= @property.name %></h2>
+        <div class="change-property">
+          <% if current_user == @property.user %>
+            <%= link_to "編集", edit_property_path(@property), class: 'edit-property' %>
+          <% end %>
+          <% if current_user.admin? || (current_user == @property.user) %>
+            <%= link_to "削除", property_path(@property), method: :delete, class: 'delete-property',
+                                                      data: { confirm: "本当に削除しますか？" } %>
+          <% end %>
         </div>
-      </div>
-      <div class="comment">
-        <%= render "comments/feed_comments" %>
-        <%= render "comments/new" %>
+        <h4><%= @property.description %></h4>
+        <h4 class="property-reference">物件詳細：<%= link_to "#{@property.reference}", @property.reference, target: "_blank" %></h4>
+        <div class="show-property-other-info">
+          <div class="property-info">
+            <h5>オススメ度：</h5>
+            <h4>
+              <% if @property.recommend.present? %>
+                <%= "★" * @property.recommend %><%= "☆" * (5 - @property.recommend) %>
+              <% end %>
+            </h4>
+          </div>
+        </div>
+        <div class="comment">
+          <%= render "comments/feed_comments" %>
+          <%= render "comments/new" %>
+        </div>
       </div>
     </div>
   </div>

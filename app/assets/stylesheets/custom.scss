@@ -29,6 +29,22 @@ $main-yellow: #5cf5ed;
   }
 }
 
+// スマホ用
+@media screen and (max-width: 768px) {
+  #logo {
+    img {
+      max-width: 400%;
+      height: auto;
+      box-sizing: border-box;
+    }
+  }
+}
+
+// スマホ閲覧時、横棒三本をページ上部に固定
+.fh5co-nav-toggle {
+  position: fixed;
+}
+
 // フッター
 #fh5co-footer {
   margin-top: 3em;

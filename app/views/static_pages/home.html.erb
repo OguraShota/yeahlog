@@ -1,19 +1,33 @@
 <% if logged_in? %>
-  <div class="container">
-    <div class="row">
+  <div id="fh5co-portfolio">
+    <div class="container">
       <div class="col-md-9">
-        <h3>物件一覧 (<%= @feed_items.count %>)</h3>
+        <h3>みんなの料理 (<%= @feed_items.count %>)</h3>
         <%= render 'shared/feed' %>
       </div>
       <div class="col-md-3">
-      <p><%= link_to "物件を登録する", new_property_path, class: "btn btn-primary btn-lg btn-record" %></p>
+        <p><%= link_to "新しい料理を作る", new_property_path, class: "btn btn-primary btn-lg btn-demo btn-record" %></p>
       </div>
     </div>
   </div>
 <% else %>
-<center>
-  <h1>yeahlogへようこそ！</h1>
-  <h2>下北沢に特化した物件情報共有サイトです</h2>
-  <p>お部屋探しを成功させましょう！</p>
-</center>
+  <header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <div class="display-t js-fullheight">
+            <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+              <h1>お部屋を決める前に、<br>物件の情報をチェック。</h1>
+              <h2>あなたのお引っ越しを成功させましょう！</h2>
+              <p>
+                <%= link_to 'yeahlogを始める', signup_path, class: "btn btn-primary btn-lg btn-demo" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 <% end %>
+

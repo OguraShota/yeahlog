@@ -169,4 +169,54 @@ RSpec.describe "Properties", type: :system do
       end
     end
   end
+
+  context "検索機能" do
+    context "ログインしている場合" do
+      before do
+        login_for_system(user)
+        visit root_path
+      end
+
+      it "ログイン後の各ページに検索窓が表示されていること" do
+        expect(page).to have_css 'form#property_search'
+        visit about_path
+        expect(page).to have_css 'form#property_search'
+        visit use_of_terms_path
+        expect(page).to have_css 'form#property_search'
+        visit users_path
+        expect(page).to have_css 'form#property_search'
+        visit edit_user_path(user)
+        expect(page).to have_css 'form#property_search'
+        visit following_user_path(user)
+        expect(page).to have_css 'form#property_search'
+        visit followers_user_path(user)
+        expect(page).to have_css 'form#property_search'
+        visit properties_path
+        expect(page).to have_css 'form#property_search'
+        visit property_path(property)
+        expect(page).to have_css 'form#property_search'
+        visit new_property_path
+        expect(page).to have_css 'form#property_search'
+        visit edit_property_path(property)
+        expect(page).to have_css 'form#property_search'
+      end
+
+      it "検索ワードを入れずに検索ボタンを押した場合、物件一覧が表示されること" do
+        fill_in 'q_name_cont', with: ''
+        click_button '検索'
+        expect(page).to have_css 'h3', text: "物件一覧"
+        within find('.properties') do
+          expect(page).to have_css 'li', count: Property.count
+        end
+      end
+    end
+
+
+    context "ログインしていない場合" do
+      it "検索窓が表示されないこと" do
+          visit root_path
+          expect(page).not_to have_css 'form#property_search'
+      end
+    end
+  end
 end

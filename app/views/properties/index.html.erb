@@ -1,0 +1,14 @@
+<% provide(:title, '物件一覧') %>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <% if @search_word.present? %>
+      <h3>"<%= @search_word %>"の検索結果:<%= @properties.count %>件</h3>
+    <% else %>
+      <h3>物件一覧</h3>
+    <% end %>
+    <ul class="properties">
+      <%= render @properties %>
+    </ul>
+    <%= will_paginate %>
+  </div>
+</div>

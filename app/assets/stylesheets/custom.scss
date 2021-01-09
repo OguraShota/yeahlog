@@ -58,7 +58,7 @@ $main-yellow: #5cf5ed;
 }
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb ;
+  border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
@@ -135,6 +135,8 @@ input {
   }
 }
 
+fh5co-portfolio
+
 .properties {
   list-style: none;
   padding: 0;
@@ -177,6 +179,28 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+// トップページ(ログイン前)
+.recruit-login {
+  background-color: skyblue;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: solid 3px #000000;
+}
+
+.title-form {
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.description-form {
+  margin-bottom: 20px;
+}
+
+.recruit-account {
+  margin-top: 20px;
 }
 
 //トップページ(ログイン後)
@@ -369,7 +393,7 @@ li.new_notification > a > span {
   }
 }
 
-#fh5co -about {
+#fh5co-about {
   padding: 0;
 }
 

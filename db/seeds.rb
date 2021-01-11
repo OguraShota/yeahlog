@@ -10,8 +10,8 @@ User.create!(
     {
             name:  "採用 太郎",
             email:  "recruit@example.com",
-            password:               "password",
-            password_confirmation:  "password",
+            password:               "fadfa7kle",
+            password_confirmation:  "fadfa7kle",
     },
   ]
 )

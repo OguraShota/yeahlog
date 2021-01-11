@@ -401,3 +401,108 @@ li.new_notification > a > span {
   padding-top: 7em;
   padding-bottom: 0;
 }
+
+// yeahlogとは？ページ
+
+.title-about {
+  padding: 0.5em;
+  background: #fef6f3;
+  border-left: solid 5px #F6A38B;
+}
+
+.title-use {
+  position: relative;
+  padding-left: 25px;
+  margin-top: 50px;
+}
+
+ol.main-use {
+  counter-reset: list;
+  list-style-type: none;
+  font: 14px/1.6 'arial narrow', sans-serif;
+  font-size: 18px;
+  padding: 1.5em 1.5em 0.5em 1.5em;
+}
+
+ol.main-use li {
+  position: relative;
+  line-height: 30px;
+  margin: 7px 0 10px 30px;
+  padding: 5px 0 5px 20px;
+  font-weight: bold;
+  background: #fef6f3;
+}
+
+ol.main-use li:before {
+  position: absolute;
+  left: -50px;
+  width: 40px;
+  height: 40px;
+  padding-top: 5px;
+  text-align: center;
+  color: #fff ;
+  background: #F6A38B ;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+ol.main-use li.A:before {
+  content: "A";
+}
+
+ol.main-use li.B:before {
+  content: "B";
+}
+
+ol.main-use li:after {
+  content:"";
+  display: block;
+  position: absolute;
+  left: -10px;
+  height: 0;
+  width: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 7px solid #F6A38B ;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.about-line {
+  border: dashed 1px #F6A38B;
+  margin: 2em 0;
+}
+
+.title-use:before {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  border-left: solid 15px transparent;
+  border-bottom: solid 15px #F6A38B ;
+}
+.title-use:after {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 10px;
+  width: 100%;
+  border-bottom: solid 3px #F6A38B ;
+}
+
+
+.use-content {
+  font-weight: bold;
+  margin-bottom: 30px;
+}

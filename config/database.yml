@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: yeahlog_production
-  username: yeahlog
-  password: <%= ENV['YEAHLOG_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock

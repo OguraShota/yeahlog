@@ -4,6 +4,9 @@
 ## 概要
 ![image](https://user-images.githubusercontent.com/73694913/104434513-a6809280-55ce-11eb-8267-fadf970edc37.png)
 
+## URL
+ [yeahlog](3.131.23.59 "yeahlog")
+
 # 技術的ポイント
 ・RSpecでModel,Request,Systemテスト記述  
 ・Ajaxを用いた非同期処理(フォロー/未フォロー)  

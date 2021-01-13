@@ -11,24 +11,31 @@
     </div>
   </div>
 <% else %>
-  <%= render 'shared/recruit_login' %>
+  
   <header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2 text-center">
+        <div class="col-md-6 col-md-offset-3 text-center">
           <div class="display-t js-fullheight welcome-message">
             <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-              <h1>お部屋を決める前に、<br>物件の情報をチェック。</h1>
+              <h1>お部屋を決める前に、<br>物件情報をチェック。</h1>
               <h2>あなたのお引っ越しを成功させましょう！</h2>
               <p>
                 <%= link_to 'yeahlogを始める', signup_path, class: "btn btn-primary btn-lg btn-demo" %>
               </p>
+                <br>
+              <p>
+                <h4>＜※採用担当者様は下のゲストログインをご利用下さい＞</h4>
+              </p>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
   </header>
+
+  <%= render 'shared/recruit_login' %>
 <% end %>
 

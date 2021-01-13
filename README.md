@@ -1,3 +1,7 @@
+![ramenTimer](https://user-images.githubusercontent.com/73694913/104428553-f740bd00-55c7-11eb-8935-0c57a0694f78.png)
+
+
+
 # アプリケーションの概要
 自分の住んでる物件を投稿し情報を共有できる、物件投稿SNSサービス。
 

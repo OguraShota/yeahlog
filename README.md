@@ -5,7 +5,9 @@
 ![image](https://user-images.githubusercontent.com/73694913/104434513-a6809280-55ce-11eb-8267-fadf970edc37.png)
 
 ## URL
- [yeahlog](3.131.23.59 "yeahlog")
+ [yeahlog](http://3.131.23.59 "yeahlog")<br>
+ 
+ 【ゲストログイン】ボタンからテストユーザーとしてログインできます。
 
 # 技術的ポイント
 ・RSpecでModel,Request,Systemテスト記述  

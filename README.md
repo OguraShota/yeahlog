@@ -26,8 +26,19 @@
 ・ログイン状態の保持  
 ・モデルに対するバリデーション
 
-# 環境
+# 環境・使用技術
+■フロントエンド  
+・Bootstrap
+・SCSS
+・JavaScript、jQuery、Ajax
+
 ■フレームワーク  
- Ruby on Rails  
-■データベース  
- MySQL
+・Ruby on Rails
+ 
+■開発環境    
+・MySQL
+ 
+■本番環境  
+・AWS (EC2)
+・Nginx
+・Capistrano
